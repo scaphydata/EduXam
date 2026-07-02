@@ -1,4 +1,9 @@
-<?php include('php/_debug.php'); ?>
+<?php 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+include(__DIR__ . '/../php/_debug.php'); 
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -9,17 +14,17 @@
 	<meta name="viewport" content="width=device-width initial-scale=1.0">
 	
 	<!-- NORMALIZE -->
-	<link rel="stylesheet" type="text/css" href="styles/libs/normalize/7.0.0/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="<?= $base_url ?? '' ?>styles/libs/normalize/7.0.0/normalize.css" />
 	<!-- FAVICON -->
-	<link rel="shortcut icon" href="images/eduxamMignature.png" >
+	<link rel="shortcut icon" href="<?= $base_url ?? '' ?>images/eduxamMignature.png" >
 	<!-- FONT AWESOME-->
-	<link rel="stylesheet" href="styles/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?= $base_url ?? '' ?>styles/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- GOOGLE FONT -->
 	<!-- CSS CUSTOM -->
-	<link rel="stylesheet" type="text/css" href="styles/_debug.css" />
-	<link rel="stylesheet" type="text/css" href="styles/style.css?v=<?= date("YmdHis") ?>" />
+	<link rel="stylesheet" type="text/css" href="<?= $base_url ?? '' ?>styles/_debug.css" />
+	<link rel="stylesheet" type="text/css" href="<?= $base_url ?? '' ?>styles/style.css?v=<?= date("YmdHis") ?>" />
  	<!-- JQUERY -->
- 	<script src="javascript/libs/jquery-3.2.1.min.js"></script>
+ 	<script src="<?= $base_url ?? '' ?>javascript/libs/jquery-3.2.1.min.js"></script>
 	<!-- MODERNIZR -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<!-- PLUGINS JS -->
@@ -35,9 +40,29 @@
 <!-- BODY:HEADER -->
 <header>
     <div class="entete">
-        <img src="images/eduxamLogo.png" />
+        <div class="menu1">
+            <ul id="menu">
+                <li>
+                    <a href="#" class="titremenu"><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Connexion' ?></a>
+                    <div>
+                        <ul>
+                            <?php if (isset($_SESSION['username'])): ?>
+                                <li class="#"><a href="<?= $base_url ?? '' ?>php/informations.php">Informations</a></li>
+                                <li class="#"><a href="<?= $base_url ?? '' ?>php/logout.php">Se déconnecter</a></li>
+                            <?php else: ?>
+                                <li class="#"><a href="<?= $base_url ?? '' ?>php/connexion.php">Se connecter</a></li>
+                                <li class="#"><a href="<?= $base_url ?? '' ?>php/inscription.php">S'inscrire</a></li>
+                            <?php endif; ?>
+                            <li class="#"><a href="<?= $base_url ?? '' ?>php/connexion.php">Profs</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <img src="<?= $base_url ?? '' ?>images/eduxamLogo.png" />
         <h1>EduXam</h1>
         <div class="clearfloat "></div>
+
         <div class="soustitre">
             <h2>lorem ipsum dolore sit amet lorem ipsum dolore sit amet</h2>
         </div>
