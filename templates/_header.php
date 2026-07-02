@@ -37,11 +37,59 @@
     <div class="entete">
         <img src="images/eduxamLogo.png" />
         <h1>EduXam</h1>
-        <div class="clearfloat"></div>
+        <div class="clearfloat "></div>
         <div class="soustitre">
             <h2>lorem ipsum dolore sit amet lorem ipsum dolore sit amet</h2>
         </div>
     </div>
+    <nav>
+        <div class="menu2">
+            <ul id="menu">
+                <li>
+                    <a href="#" class="titremenu"> scaphydata</a>
+                    <div>
+                        <ul>
+                            <li class="#"><a href="https://www.scaphydata.com">scaphydata</a></li>
+                            <li class="#"><a href="https://www.scaphydata.com">scaphydata</a></li>
+                            <li class="#"><a href="https://www.scaphydata.com">scaphydata</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="titremenu">Rent or buy</a>
+                    <div>
+                        <ul>
+                            <li><a href="https://scaphydata.com/ecommerce3D/">Rent or buy</a></li>
+                            <li><a href="https://scaphydata.com/ecommerce3D/">Rent or buy</a></li>
+                            <li><a href="https://scaphydata.com/ecommerce3D/">Rent or buy</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="titremenu">scaphydata3D</a>
+                    <div>
+                        <ul>
+                            <li><a href="https://scaphydata.com/scaphydata3D/">scaphydata3D</a></li>
+                            <li><a href="https://scaphydata.com/scaphydata3D/">scaphydata3D</a></li>
+                            <li><a href="https://scaphydata.com/scaphydata3D/">scaphydata3D</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="titremenu">Odysseum</a>
+                    <div>
+                        <ul>
+                            <li><a href="https://scaphydata.com/Odysseum/">Odysseum</a></li>
+                            <li><a href="https://scaphydata.com/Odysseum/">Odysseum</a></li>
+                            <li><a href="https://scaphydata.com/Odysseum/">Odysseum</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfloat"></div>
+    </nav>
+
 </header>
 
 
