@@ -723,3 +723,89 @@ div.menu1 ul li
 	}
 }
 
+/* FORMULAIRES (Connexion & Inscription) */
+.connexion-section {
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+}
+
+.form-container h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #22395c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-submit:hover {
+    background-color: #4f678d;
+}
+
+.error-message {
+    color: #d9534f;
+    background-color: #f2dede;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.success-message {
+    color: #3c763d;
+    background-color: #dff0d8;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.form-footer a {
+    color: #22395c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
