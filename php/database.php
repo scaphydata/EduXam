@@ -33,12 +33,52 @@ function getDatabaseConnection() {
             role VARCHAR(50)
         )");
 
+        // Create formations table if it doesn't exist
+        $pdo->exec("CREATE TABLE IF NOT EXISTS formations (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            description TEXT NOT NULL,
+            image VARCHAR(255) DEFAULT 'images/eduxamLogo.png'
+        )");
+
         // Add a default user if none exists
         $stmt = $pdo->query("SELECT COUNT(*) FROM users");
         if ($stmt->fetchColumn() == 0) {
             $password = password_hash('admin123', PASSWORD_DEFAULT);
-            $pdo->prepare("INSERT INTO users (username, password, email, role) VALUES (?, ?, ?, ?)")
-                ->execute(['admin', $password, 'admin@eduxam.com', 'admin']);
+            $admin_user = 'admin';
+            $admin_email = 'admin@eduxam.com';
+            $admin_role = 'admin';
+            $stmt = $pdo->prepare("INSERT INTO users (username, password, email, role) VALUES (:username, :password, :email, :role)");
+            $stmt->bindParam(':username', $admin_user, PDO::PARAM_STR);
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $admin_email, PDO::PARAM_STR);
+            $stmt->bindParam(':role', $admin_role, PDO::PARAM_STR);
+            $stmt->execute();
+        }
+
+        // Add sample formations if none exist
+        $stmt = $pdo->query("SELECT COUNT(*) FROM formations");
+        if ($stmt->fetchColumn() == 0) {
+            $samples = [
+                ['Formation 1', 'Description complète de la Formation 1. C\'est une formation dynamique !', 'images/eduxamLogo.png'],
+                ['Formation 2', 'Description complète de la Formation 2. Apprenez tout sur ce sujet.', 'images/eduxamLogo.png'],
+                ['Formation 3', 'Description complète de la Formation 3. Devenez un expert.', 'images/eduxamLogo.png'],
+                ['Formation 4', 'Description complète de la Formation 4. Un contenu riche et varié.', 'images/eduxamLogo.png'],
+                ['Formation 5', 'Description complète de la Formation 5. Pratique et théorie.', 'images/eduxamLogo.png'],
+                ['Formation 6', 'Description complète de la Formation 6. La dernière de notre liste.', 'images/eduxamLogo.png'],
+            ];
+            
+            $stmt = $pdo->prepare("INSERT INTO formations (name, description, image) VALUES (:name, :description, :image)");
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+            $stmt->bindParam(':image', $image, PDO::PARAM_STR);
+            
+            foreach ($samples as $sample) {
+                $name = $sample[0];
+                $description = $sample[1];
+                $image = $sample[2];
+                $stmt->execute();
+            }
         }
 
         return $pdo;

@@ -183,8 +183,24 @@ nav
 	margin: 0 auto;
 	padding-left: 14%;
 }
-
-
+.menu3
+{
+	display: flex;
+	flex-direction: row;
+}
+.menu3 div
+{
+	margin: 0 10px;
+}
+.menu3 div a
+{
+	text-decoration: none;
+	color: black;
+	border: 2px solid darkcyan;
+	padding: 10px;
+	border-radius: 10px;
+	font-size: 1.3em;
+}
 /*** Fin menu ***/
 
 
@@ -193,7 +209,8 @@ main
 {
 	max-width: 98%;
 	text-align: center;
-	margin: 0 auto;
+	margin: 30px auto;
+	padding: 20px;
 	border: 47.5px solid darkcyan;
 }
 div.readmore1,div.readmore2 {

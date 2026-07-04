@@ -23,8 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdo = getDatabaseConnection();
 
         if ($pdo) {
-            $stmt = $pdo->prepare("SELECT id, username, password FROM users WHERE username = ?");
-            $stmt->execute([$username]);
+            $stmt = $pdo->prepare("SELECT id, username, password FROM users WHERE username = :username");
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->execute();
             $user = $stmt->fetch();
 
             if ($user && password_verify($password, $user['password'])) {

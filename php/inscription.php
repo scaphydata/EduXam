@@ -27,17 +27,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($pdo) {
             // Vérifier si l'utilisateur existe déjà (nom d'utilisateur ou email)
-            $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
-            $stmt->execute([$username, $email]);
+            $stmt = $pdo->prepare("SELECT id FROM users WHERE username = :username OR email = :email");
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
             
             if ($stmt->fetch()) {
                 $error = "Nom d'utilisateur ou email déjà utilisé.";
             } else {
                 // Insérer l'utilisateur avec hashage sécurisé
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = $pdo->prepare("INSERT INTO users (username, password, email, role) VALUES (?, ?, ?, 'user')");
+                $stmt = $pdo->prepare("INSERT INTO users (username, password, email, role) VALUES (:username, :password, :email, 'user')");
+                $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+                $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
                 
-                if ($stmt->execute([$username, $hashedPassword, $email])) {
+                if ($stmt->execute()) {
                     $success = "Inscription réussie ! Vous pouvez maintenant vous connecter.";
                     $username = "";
                     $email = "";
