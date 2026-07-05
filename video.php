@@ -38,10 +38,11 @@ include('templates/_header.php');
             <h3>Vidéo : <?= h($formation['name']) ?></h3>
             
             <div style="margin: 30px 0; text-align: center;">
-                <div style="width: 100%; max-width: 600px; height: 338px; background-color: #eee; margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 1px solid #ccc;">
-                    <p style="color: #666;">Lecteur vidéo à venir pour <?= h($formation['name']) ?></p>
-                </div>
-                <p style="margin-top: 20px; line-height: 1.6;">Regardez les tutoriels vidéo de cette formation.</p>
+                <video controls width="700" style="max-width: 100%; border-radius: 10px; border: 6px solid #ccc;">
+                    <source src="<?= h($formation['video']) ?>" type="video/mp4" />
+                    Votre navigateur ne supporte pas la lecture de vidéos HTML5. 
+                    Voici un lien pour <a href="<?= h($formation['video']) ?>">télécharger la vidéo</a>.
+                </video>
             </div>
 
             <div class="readmore1" style="margin-top: 30px;">
