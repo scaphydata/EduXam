@@ -40,7 +40,17 @@ include(__DIR__ . '/../php/_debug.php');
 <!-- BODY:HEADER -->
 <header>
     <div class="entete">
-        <div class="menu1">
+        <div id="menu3" class="boutonlogin">
+            <ul id="menu" >
+                <li class="#"><a href="<?= $base_url ?? '' ?>php/connexion.php">Profs</a></li>
+            </ul>
+        </div>
+        <div id="menu2" class="boutonlogin">
+            <ul id="menu" >
+                <li class="#"><a href="<?= $base_url ?? '' ?>php/inscription.php">S'inscrire</a></li>
+            </ul>
+        </div>
+        <div id="menu1" class="boutonlogin">
             <ul id="menu">
                 <li>
                     <a href="#" class="titremenu"><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Connexion' ?></a>
@@ -50,10 +60,8 @@ include(__DIR__ . '/../php/_debug.php');
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/informations.php">Informations</a></li>
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/logout.php">Se déconnecter</a></li>
                             <?php else: ?>
-                                <li class="#"><a href="<?= $base_url ?? '' ?>php/connexion.php">Se connecter</a></li>
-                                <li class="#"><a href="<?= $base_url ?? '' ?>php/inscription.php">S'inscrire</a></li>
+                                <li class="#"><a href="<?= $base_url ?? '' ?>php/connexion.php">Se connecter</a></li> 
                             <?php endif; ?>
-                            <li class="#"><a href="<?= $base_url ?? '' ?>php/connexion.php">Profs</a></li>
                         </ul>
                     </div>
                 </li>
