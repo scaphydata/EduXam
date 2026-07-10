@@ -52,8 +52,37 @@ function check_logged_in() {
 }
 
 /**
+ * Protège une page professeur : redirige vers la connexion prof si non autorisé.
+ */
+function check_prof_logged_in() {
+    if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'prof') {
+        // Obtenir le chemin relatif vers la racine
+        $redirect_path = "php/connexionprofs.php";
+        if (file_exists("php/connexionprofs.php")) {
+            header("Location: " . $redirect_path);
+        } else {
+            header("Location: connexionprofs.php");
+        }
+        exit;
+    }
+}
+
+/**
  * Échappe les données pour l'affichage HTML.
  */
 function h($string) {
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+}
+
+/**
+ * Retourne le nombre d'étudiants inscrits (utilisateurs de la table 'users').
+ */
+function get_student_count() {
+    try {
+        $pdo = getDatabaseConnection();
+        $stmt = $pdo->query("SELECT COUNT(*) FROM users");
+        return (int)$stmt->fetchColumn();
+    } catch (PDOException $e) {
+        return 0;
+    }
 }

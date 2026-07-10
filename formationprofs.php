@@ -1,7 +1,8 @@
 <?php
 require_once('php/database.php');
 require_once('php/functions.php');
-require_once('Formation.php');
+start_secure_session();
+check_prof_logged_in();
 
 // Get formation ID from URL
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
@@ -18,11 +19,12 @@ if ($id > 0) {
         // Handle error
     }
 }
-?>
+require_once('templates/headerprofs.php') ?>
+
 <section>
     <div class="menu3">
         <div>
-            <a href="cours.php?id=<?= $id ?>" style="background-color: darkcyan; color: white;">Cours</a>
+            <a href="cours.php?id=<?= $id ?>" >Cours</a>
         </div>
         <div>
             <a href="video.php?id=<?= $id ?>" >Video</a>
@@ -34,15 +36,14 @@ if ($id > 0) {
     <div class="formation1" style="max-width: 80%; margin: 40px auto; padding: 20px; border: 2px solid darkcyan; border-radius: 15px;">
 
         <?php if ($formation): ?>
-            <h3>Cours : <?= h($formation['name']) ?></h3>
-            
-            <div style="margin: 30px 0; text-align: left; line-height: 1.6;">
-                <p>Bienvenue dans la section <strong>Cours</strong> de la formation <?= h($formation['name']) ?>.</p>
-                <p>Le contenu pédagogique détaillé sera bientôt disponible ici.</p>
-            </div>
+            <h3><?= h($formation['name']) ?></h3>
 
+            <img src="<?= h($formation['image']) ?>" alt="<?= h($formation['name']) ?>" style="max-width: 250px; height: auto; margin: 20px auto; display: block;" />
+            <p style="text-align: justify; line-height: 1.6; font-size: 1.1em; color: #333;">
+                <?= nl2br(h($formation['description'])) ?>
+            </p>
             <div class="readmore1" style="margin-top: 30px;">
-                <a href="Formation.php?id=<?= $id ?>">Retour à la formation</a>
+                <a href="index.php">Retour aux formations</a>
             </div>
         <?php else: ?>
             <h3>Formation non trouvée</h3>
@@ -55,6 +56,5 @@ if ($id > 0) {
     </div>
 </section>
 
-<?php
-include('templates/_footer.php');
-?>
+<?php require_once('templates/footerprofs.php') ?>
+

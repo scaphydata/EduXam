@@ -42,7 +42,7 @@ include(__DIR__ . '/../php/_debug.php');
     <div class="entete">
         <div id="menu3" class="boutonlogin">
             <ul id="menu" >
-                <li class="#"><a href="<?= $base_url ?? '' ?>php/cours.php">Cours</a></li>
+                <li class="#"><a href="<?= $base_url ?? '' ?>cours.php">Cours</a></li>
             </ul>
         </div>
         <div id="menu2" class="boutonlogin">
@@ -60,7 +60,7 @@ include(__DIR__ . '/../php/_debug.php');
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/informations.php">Informations</a></li>
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/logout.php">Se déconnecter</a></li>
                             <?php else: ?>
-                                <li class="#"><a href="<?= $base_url ?? '' ?>php/connexion.php">Se connecter</a></li>
+                                <li class="#"><a href="<?= $base_url ?? '' ?>php/connexionprofs.php">Se connecter</a></li>
                             <?php endif; ?>
                         </ul>
                     </div>
@@ -72,6 +72,11 @@ include(__DIR__ . '/../php/_debug.php');
         <div class="clearfloat "></div>
 
         <div class="soustitre">
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'prof'): ?>
+                <div style="float: right; margin-right: 20px; background: darkcyan; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; position: relative; z-index: 10;">
+                    Nombre d'étudiants : <?= function_exists('get_student_count') ? get_student_count() : '?' ?>
+                </div>
+            <?php endif; ?>
             <h2>lorem ipsum dolore sit amet lorem ipsum dolore sit amet</h2>
         </div>
     </div>

@@ -29,8 +29,14 @@ function getDatabaseConnection() {
             id INT AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(191) UNIQUE,
             password VARCHAR(255),
-            email VARCHAR(255),
-            role VARCHAR(50)
+            email VARCHAR(255)
+        )");
+        // Create profs table if it doesn't exist
+        $pdo->exec("CREATE TABLE IF NOT EXISTS profs (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(191) UNIQUE,
+            password VARCHAR(255),
+            email VARCHAR(255)
         )");
 
         // Create formations table if it doesn't exist
