@@ -123,6 +123,13 @@ h2
 	position:relative;
 	z-index:2;
 }
+div.boutonlogin
+{
+	display: inline-block;
+}
+
+
+
 
 /*section .panier a
 {
@@ -384,21 +391,21 @@ header h1
 	max-width: 10%;
 
 }
-	div.menu1
+	div#menu1
 	{
-		marign-top:0;
+		margin-top:0;
 		padding-top:0;
-		margin-left:99%;
-		padding-left:99%;
+		margin-left:0;
+		padding-left:0;
 		float:right;
 	}
-div.menu1 ul
+div#menu1 ul
 {
 	list-style-type: none;
 	margin:0;
 	padding:0;
 }
-div.menu1 ul li
+div#menu1 ul li
 {
 	display:inline;
 }
@@ -409,21 +416,21 @@ div.menu1 ul li
 
 }
 @media screen and (min-width: 1200px) {
-	div.menu1
+	div#menu1
 	{
-		marign-top:0;
+		margin-top:0;
 		padding-top:0;
-		margin-left:99%;
-		padding-left:99%;
+		margin-left:0;
+		padding-left:0;
 		float:right;
 	}
-	div.menu1 ul
+	div#menu1 ul
 	{
 		list-style-type: none;
 		margin:0;
 		padding:0;
 	}
-	div.menu1 ul li
+	div#menu1 ul li
 	{
 		display:inline;
 	}
@@ -595,7 +602,26 @@ div.menu1 ul li
 		margin: 0 auto;
 		padding-left: 14%;
 	}
-
+	div#menu1
+	{
+		padding-right:0;
+		display:inline-block;
+		float:right;
+		vertical-align: top;
+	}
+	div#menu2
+	{
+		padding-right:0;
+		float:right;
+		display:inline-block;
+		vertical-align: top;
+	}
+	div#menu3{
+		padding-right:0;
+		float:right;
+		display:inline-block;
+		vertical-align: top;
+	}
 
 	/*** Fin menu ***/
 	/* MAIN */

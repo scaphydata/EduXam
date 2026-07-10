@@ -1,8 +1,8 @@
-<?php 
+<?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include(__DIR__ . '/../php/_debug.php'); 
+include(__DIR__ . '/../php/_debug.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,26 +10,26 @@ include(__DIR__ . '/../php/_debug.php');
 
 <head>
 
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width initial-scale=1.0">
-	
-	<!-- NORMALIZE -->
-	<link rel="stylesheet" type="text/css" href="<?= $base_url ?? '' ?>styles/libs/normalize/7.0.0/normalize.css" />
-	<!-- FAVICON -->
-	<link rel="shortcut icon" href="<?= $base_url ?? '' ?>images/eduxamMignature.png" >
-	<!-- FONT AWESOME-->
-	<link rel="stylesheet" href="<?= $base_url ?? '' ?>styles/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- GOOGLE FONT -->
-	<!-- CSS CUSTOM -->
-	<link rel="stylesheet" type="text/css" href="<?= $base_url ?? '' ?>styles/_debug.css" />
-	<link rel="stylesheet" type="text/css" href="<?= $base_url ?? '' ?>styles/style.css?v=<?= date("YmdHis") ?>" />
- 	<!-- JQUERY -->
- 	<script src="<?= $base_url ?? '' ?>javascript/libs/jquery-3.2.1.min.js"></script>
-	<!-- MODERNIZR -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-	<!-- PLUGINS JS -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
 
-	<title>EduXam</title>
+    <!-- NORMALIZE -->
+    <link rel="stylesheet" type="text/css" href="<?= $base_url ?? '' ?>styles/libs/normalize/7.0.0/normalize.css" />
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="<?= $base_url ?? '' ?>images/eduxamMignature.png" >
+    <!-- FONT AWESOME-->
+    <link rel="stylesheet" href="<?= $base_url ?? '' ?>styles/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- GOOGLE FONT -->
+    <!-- CSS CUSTOM -->
+    <link rel="stylesheet" type="text/css" href="<?= $base_url ?? '' ?>styles/_debug.css" />
+    <link rel="stylesheet" type="text/css" href="<?= $base_url ?? '' ?>styles/style.css?v=<?= date("YmdHis") ?>" />
+    <!-- JQUERY -->
+    <script src="<?= $base_url ?? '' ?>javascript/libs/jquery-3.2.1.min.js"></script>
+    <!-- MODERNIZR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <!-- PLUGINS JS -->
+
+    <title>EduXam</title>
 
 </head>
 
@@ -42,7 +42,7 @@ include(__DIR__ . '/../php/_debug.php');
     <div class="entete">
         <div id="menu3" class="boutonlogin">
             <ul id="menu" >
-                <li class="#"><a href="<?= $base_url ?? '' ?>php/profs.php">Profs</a></li>
+                <li class="#"><a href="<?= $base_url ?? '' ?>php/cours.php">Cours</a></li>
             </ul>
         </div>
         <div id="menu2" class="boutonlogin">
@@ -60,7 +60,7 @@ include(__DIR__ . '/../php/_debug.php');
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/informations.php">Informations</a></li>
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/logout.php">Se déconnecter</a></li>
                             <?php else: ?>
-                                <li class="#"><a href="<?= $base_url ?? '' ?>php/connexion.php">Se connecter</a></li> 
+                                <li class="#"><a href="<?= $base_url ?? '' ?>php/connexion.php">Se connecter</a></li>
                             <?php endif; ?>
                         </ul>
                     </div>
