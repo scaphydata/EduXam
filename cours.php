@@ -1,7 +1,17 @@
 <?php
 require_once('php/database.php');
 require_once('php/functions.php');
-require_once('Formation.php');
+start_secure_session();
+
+// Check if it's a prof or a regular student
+$is_prof = isset($_SESSION['role']) && $_SESSION['role'] === 'prof';
+if ($is_prof) {
+    check_prof_logged_in();
+    require_once('templates/headerprofs.php');
+} else {
+    check_logged_in();
+    require_once('templates/_header.php');
+}
 
 // Get formation ID from URL
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
@@ -42,13 +52,13 @@ if ($id > 0) {
             </div>
 
             <div class="readmore1" style="margin-top: 30px;">
-                <a href="Formation.php?id=<?= $id ?>">Retour à la formation</a>
+                <a href="<?= $is_prof ? 'profs.php?id=' . $id : 'Formation.php?id=' . $id ?>">Retour à la formation</a>
             </div>
         <?php else: ?>
             <h3>Formation non trouvée</h3>
             <p>Désolé, nous n'avons pas pu trouver la formation demandée.</p>
             <div class="readmore1">
-                <a href="index.php">Retour à l'accueil</a>
+                <a href="<?= $is_prof ? 'profs.php' : 'index.php' ?>">Retour à l'accueil</a>
             </div>
         <?php endif; ?>
 

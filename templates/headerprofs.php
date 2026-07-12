@@ -42,7 +42,7 @@ include(__DIR__ . '/../php/_debug.php');
     <div class="entete">
         <div id="menu3" class="boutonlogin">
             <ul id="menu" >
-                <li class="#"><a href="<?= $base_url ?? '' ?>cours.php">Cours</a></li>
+                <li class="#"><a href="<?= $base_url ?? '' ?>profs.php">Formations</a></li>
             </ul>
         </div>
         <div id="menu2" class="boutonlogin">
