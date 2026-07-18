@@ -40,6 +40,11 @@ include(__DIR__ . '/../php/_debug.php');
 <!-- BODY:HEADER -->
 <header>
     <div class="entete">
+        <div id="menu2" class="boutonlogin">
+            <ul id="menu" >
+                <li class="#"><a href="<?= $base_url ?? '' ?>parents.php">Parents</a></li>
+            </ul>
+        </div>
         <div id="menu3" class="boutonlogin">
             <ul id="menu" >
                 <li class="#"><a href="<?= $base_url ?? '' ?>profs.php">Profs</a></li>

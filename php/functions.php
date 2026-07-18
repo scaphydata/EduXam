@@ -68,6 +68,22 @@ function check_prof_logged_in() {
 }
 
 /**
+ * Protège une page parents : redirige vers la connexion parents si non autorisé.
+ */
+function check_parents_logged_in() {
+    if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'parents') {
+        // Obtenir le chemin relatif vers la racine
+        $redirect_path = "php/connexionparents.php";
+        if (file_exists("php/connexionparents.php")) {
+            header("Location: " . $redirect_path);
+        } else {
+            header("Location: connexionparents.php");
+        }
+        exit;
+    }
+}
+
+/**
  * Échappe les données pour l'affichage HTML.
  */
 function h($string) {
