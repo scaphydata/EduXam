@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Régénérer le token après connexion réussie
                 regenerate_csrf_token();
 
-                header("Location: informations.php");
+                header("Location: ../eleve.php");
                 exit;
             } else {
                 $error = "Nom d'utilisateur ou mot de passe incorrect.";

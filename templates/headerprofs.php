@@ -127,14 +127,14 @@ include(__DIR__ . '/../php/_debug.php');
         </div>
         <div class="clearfloat"></div>
     </nav>
-
+    <div class="soustitrededie">
+        <h2>Les profs ;)</h2>
+    </div>
 </header>
 
 
 
 <!-- BODY:MAIN -->
 <main>
-    <div class="soustitrededie">
-        <h2>Les profs ;)</h2>
-    </div>
+
 

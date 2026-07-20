@@ -46,7 +46,13 @@ function regenerate_csrf_token() {
  */
 function check_logged_in() {
     if (!isset($_SESSION['user_id'])) {
-        header("Location: connexion.php");
+        // Obtenir le chemin relatif vers la racine
+        $redirect_path = "php/connexion.php";
+        if (file_exists("php/connexion.php")) {
+            header("Location: " . $redirect_path);
+        } else {
+            header("Location: connexion.php");
+        }
         exit;
     }
 }

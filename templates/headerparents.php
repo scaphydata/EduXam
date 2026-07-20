@@ -42,7 +42,7 @@ include(__DIR__ . '/../php/_debug.php');
     <div class="entete">
         <div id="menu3" class="boutonlogin">
             <ul id="menu" >
-                <li class="#"><a href="<?= $base_url ?? '' ?>elelve.php">Enfant</a></li>
+                <li class="#"><a href="<?= $base_url ?? '' ?>eleve.php">Enfant</a></li>
             </ul>
         </div>
         <div id="menu3" class="boutonlogin">
@@ -128,14 +128,14 @@ include(__DIR__ . '/../php/_debug.php');
         </div>
         <div class="clearfloat"></div>
     </nav>
-
+    <div class="soustitrededie">
+        <h2>Les parents</h2>
+    </div>
 </header>
 
 
 
 <!-- BODY:MAIN -->
 <main>
-    <div class="soustitrededie">
-        <h2>Les parents</h2>
-    </div>
+
 
