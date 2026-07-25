@@ -72,7 +72,7 @@ require_once __DIR__ . '/../templates/_header.php';
 
     <section class="connexion-section">
         <div class="form-container">
-            <h3>Inscription</h3>
+            <h3>Inscription Profs</h3>
 
             <?php if ($error): ?>
                 <p class="error-message"><?= h($error) ?></p>

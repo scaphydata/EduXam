@@ -5,7 +5,7 @@ $pdo=getDatabaseConnection();
 $stmt = $pdo->query("SELECT * FROM formations");
 $formations = $stmt->fetchAll();
 
-include('templates/_header.php');
+include('templates/_headereleve.php');
 start_secure_session();
 
 // Check if it's a prof or a regular student
@@ -15,7 +15,7 @@ if ($is_prof) {
     require_once('templates/headerprofs.php');
 } else {
     check_logged_in();
-    require_once('templates/_header.php');
+    require_once('templates/_headereleve.php');
 }
 
 // Get formation ID from URL
@@ -47,7 +47,7 @@ if ($id > 0) {
         </div>
     </div>
     <div>
-        <h3>Eleves</h3>
+        <h3>Bienvenus Eleves</h3>
     </div>
     <div class="formation1" style="max-width: 80%; margin: 40px auto; padding: 20px; border: 2px solid darkcyan; border-radius: 15px;">
 
@@ -55,7 +55,7 @@ if ($id > 0) {
             <h3>Cours : <?= h($formation['name']) ?></h3>
 
             <div style="margin: 30px 0; text-align: left; line-height: 1.6;">
-                <p>Bienvenue dans la section <strong>Mes cours</strong>1nbsp;<?= h($formation['name']) ?>.</p>
+                <p>Bienvenue dans la section <strong>Mes cours</strong>:&nbsp;<?= h($formation['name']) ?>.</p>
                 <p>Le contenu pédagogique détaillé sera bientôt disponible ici.</p>
             </div>
 

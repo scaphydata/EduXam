@@ -11,7 +11,7 @@ if ($is_prof) {
     require_once('templates/headerprofs.php');
 } else {
     check_logged_in();
-    require_once('templates/_header.php');
+    require_once('templates/_headereleve.php');
 }
 
 // Get formation ID from URL
