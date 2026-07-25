@@ -47,7 +47,7 @@ include(__DIR__ . '/../php/_debug.php');
         </div>
         <div id="menu3" class="boutonlogin">
             <ul id="menu" >
-                <li class="#"><a href="<?= $base_url ?? '' ?>messagedesprofs.php">Messages</a></li>
+                <li class="#"><a href="<?= $base_url ?? '' ?>php/messagesdesprofs.php">Messages</a></li>
             </ul>
         </div>
         <div id="menu2" class="boutonlogin">

@@ -1,6 +1,11 @@
 <?php
 require_once('php/database.php');
 require_once('php/functions.php');
+$pdo=getDatabaseConnection();
+$stmt = $pdo->query("SELECT * FROM formations");
+$formations = $stmt->fetchAll();
+
+include('templates/_header.php');
 start_secure_session();
 
 // Check if it's a prof or a regular student
@@ -41,6 +46,9 @@ if ($id > 0) {
             <a href="exercices.php?id=<?= $id ?>" >Exercices</a>
         </div>
     </div>
+    <div>
+        <h3>Eleves</h3>
+    </div>
     <div class="formation1" style="max-width: 80%; margin: 40px auto; padding: 20px; border: 2px solid darkcyan; border-radius: 15px;">
 
         <?php if ($formation): ?>
@@ -56,7 +64,7 @@ if ($id > 0) {
             </div>
         <?php else: ?>
             <h3>Formation non trouvée</h3>
-            <p>Désolé, nous n'avons pas pu trouver la formation demandée.</p>
+            <p>Tu n'es inscrit à aucune formation.</p>
             <div class="readmore1">
                 <a href="<?= $is_prof ? 'profs.php' : 'index.php' ?>">Retour à l'accueil</a>
             </div>

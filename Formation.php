@@ -1,6 +1,7 @@
 <?php
 require_once('php/database.php');
 require_once('php/functions.php');
+
 start_secure_session();
 
 // Check if it's a prof or a regular student
