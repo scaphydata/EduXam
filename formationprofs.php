@@ -24,7 +24,7 @@ try {
 } catch (PDOException $e) {
     // Handle error
 }
-require_once('templates/headerprofs.php') ?>
+require_once('templates/headerprofs.php')?>
 
 <section>
     <?php if ($id > 0): ?>

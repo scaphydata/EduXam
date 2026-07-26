@@ -57,7 +57,7 @@ include(__DIR__ . '/../php/_debug.php');
                     <div>
                         <ul>
                             <?php if (isset($_SESSION['username'])): ?>
-                                <li class="#"><a href="<?= $base_url ?? '' ?>php/informations.php">Informations</a></li>
+                                <li class="#"><a href="<?= $base_url ?? '' ?>php/informations.php">Mon compte</a></li>
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/logout.php">Se déconnecter</a></li>
                             <?php else: ?>
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/connexionparents.php">Se connecter</a></li>
