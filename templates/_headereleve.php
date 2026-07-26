@@ -60,7 +60,7 @@ include(__DIR__ . '/../php/_debug.php');
                             <?php if (isset($_SESSION['username'])): ?>
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/logout.php">Se déconnecter</a></li>
                             <?php else: ?>
-                                <li class="#"><a href="<?= $base_url ?? '' ?>php/connexion.php">Se connecter</a></li>
+                                <li class="#"><a href="<?= $base_url ?? '' ?>php/login.php">Se connecter</a></li>
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/inscription.php">S'inscrire</a></li>
                             <?php endif; ?>
                         </ul>

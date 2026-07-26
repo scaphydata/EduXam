@@ -43,49 +43,13 @@ include(__DIR__ . '/../php/_debug.php');
         <div id="menu1" class="boutonlogin">
             <ul id="menu">
                 <li>
-                    <a href="#" class="titremenu"><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Parents' ?></a>
+                    <a href="#" class="titremenu"><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Compte' ?></a>
                     <div>
                         <ul>
                             <?php if (isset($_SESSION['username'])): ?>
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/logout.php">Se déconnecter</a></li>
                             <?php else: ?>
-                                <li class="#"><a href="<?= $base_url ?? '' ?>php/connexionparents.php">Se connecter</a></li>
-                                <li class="#"><a href="<?= $base_url ?? '' ?>php/inscriptionparents.php">S'inscrire</a></li>
-                            <?php endif; ?>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div id="menu3" class="boutonlogin">
-            <div id="menu1" class="boutonlogin">
-                <ul id="menu">
-                    <li>
-                        <a href="#" class="titremenu"><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Profs' ?></a>
-                        <div>
-                            <ul>
-                                <?php if (isset($_SESSION['username'])): ?>
-                                    <li class="#"><a href="<?= $base_url ?? '' ?>php/logout.php">Se déconnecter</a></li>
-                                <?php else: ?>
-                                    <li class="#"><a href="<?= $base_url ?? '' ?>php/connexionprofs.php">Se connecter</a></li>
-                                    <li class="#"><a href="<?= $base_url ?? '' ?>php/inscriptionprofs.php">S'inscrire</a></li>
-                                <?php endif; ?>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div id="menu1" class="boutonlogin">
-            <ul id="menu">
-                <li>
-                    <a href="#" class="titremenu"><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Eleve' ?></a>
-                    <div>
-                        <ul>
-                            <?php if (isset($_SESSION['username'])): ?>
-                                <li class="#"><a href="<?= $base_url ?? '' ?>php/logout.php">Se déconnecter</a></li>
-                            <?php else: ?>
-                                <li class="#"><a href="<?= $base_url ?? '' ?>php/connexion.php">Se connecter</a></li>
+                                <li class="#"><a href="<?= $base_url ?? '' ?>php/login.php">Se connecter</a></li>
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/inscription.php">S'inscrire</a></li>
                             <?php endif; ?>
                         </ul>
