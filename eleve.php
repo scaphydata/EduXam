@@ -1,12 +1,11 @@
 <?php
 require_once('php/database.php');
 require_once('php/functions.php');
+start_secure_session();
+
 $pdo=getDatabaseConnection();
 $stmt = $pdo->query("SELECT * FROM formations");
 $formations = $stmt->fetchAll();
-
-include('templates/_headereleve.php');
-start_secure_session();
 
 // Check if it's a prof or a regular student
 $is_prof = isset($_SESSION['role']) && $_SESSION['role'] === 'prof';

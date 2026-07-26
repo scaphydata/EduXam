@@ -41,6 +41,17 @@ include(__DIR__ . '/../php/_debug.php');
 <header>
     <div class="entete">
         <div id="menu1" class="boutonlogin">
+
+                <ul id="menu" >
+                    <li class="#"><a href="<?= $base_url ?? '' ?>eleve.php">Mon compte</a></li>
+                </ul>
+            </div>
+            <div id="menu3" class="boutonlogin">
+                <ul id="menu" >
+                    <li class="#"><a href="<?= $base_url ?? '' ?>php/messagesdesprofs.php">Messages</a></li>
+                </ul>
+            </div>
+        <div id="menu3" class="boutonlogin">
             <ul id="menu">
                 <li>
                     <a href="#" class="titremenu"><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Eleve' ?></a>
