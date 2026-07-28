@@ -43,6 +43,7 @@
     </section>
     <div class="copyright">
         <p>Copyright © 2026 EduXam. All rights reserved.</p>
+        <p>All icons by <a target="_blank" href="https://icons8.com">Icons8</a></p>
         <a href="https://www.scaphydata.com" ><img src="<?= $base_url ?? '' ?>images/Logo_ScaphyData_2025.png" alt="logo de Scaphydata" class="logoscaphydata"> Webmaster: <span class="scaphydata">Scaphydata</span></a>
     </div>
 </footer>
