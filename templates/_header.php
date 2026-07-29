@@ -43,7 +43,7 @@ include(__DIR__ . '/../php/_debug.php');
         <div id="menu1" class="boutonlogin">
             <ul id="menu">
                 <li>
-                    <a href="#" class="titremenu"><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Compte' ?></a>
+                    <a href="#" class="titremenu"><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Connexion' ?></a>
                     <div>
                         <ul>
                             <?php if (isset($_SESSION['username'])): ?>
@@ -62,7 +62,7 @@ include(__DIR__ . '/../php/_debug.php');
         <div class="clearfloat "></div>
 
         <div class="soustitre">
-            <h2>lorem ipsum dolore sit amet lorem ipsum dolore sit amet</h2>
+            <h2>Du soutien pour les collègiens et lycéens</h2>
         </div>
     </div>
     <nav>

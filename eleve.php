@@ -52,6 +52,8 @@ if ($id > 0) {
 
         <?php if ($formation): ?>
             <h3>Cours : <?= h($formation['name']) ?></h3>
+            <img src="<?= h($formation['image']) ?>" alt="<?= h($formation['name']) ?>" style="max-width: 250px; height: auto; margin: 20px auto; display: block;" />
+
 
             <div style="margin: 30px 0; text-align: left; line-height: 1.6;">
                 <p>Bienvenue dans la section <strong>Mes cours</strong>:&nbsp;<?= h($formation['name']) ?>.</p>

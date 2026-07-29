@@ -1,36 +1,36 @@
 @-webkit-keyframes animationlogo {
 	0% {
-		transform: scaleX(0);
+		transform: scaleX(1);
 	}
 	25% {
-		transform: scaleX(1);
+		transform: scaleX(0.5);
 	}
 	50% {
 		transform: scaleX(0);
 	}
 	75% {
-		transform: scaleX(-1);
+		transform: scaleX(-0.5);
 	}
 	100% {
-		transform: scaleX(0);
+		transform: scaleX(-1);
 	}
 }
 
 @keyframes animationlogo {
 	0% {
-		transform: scaleX(0);
+		transform: scaleX(1);
 	}
 	25% {
-		transform: scaleX(1);
+		transform: scaleX(0.5);
 	}
 	50% {
 		transform: scaleX(0);
 	}
 	75% {
-		transform: scaleX(-1);
+		transform: scaleX(-0.5);
 	}
 	100% {
-		transform: scaleX(0);
+		transform: scaleX(-1);
 	}
 
 }
@@ -289,8 +289,8 @@ footer div.entetenartbasdepage a {
 }
 footer img.logoscaphydata {
 	margin: auto;
-	-webkit-animation: linear infinite 4.5s alternate animationlogo;
-	animation: linear infinite 4.5s alternate animationlogo;
+	-webkit-animation: linear infinite 2.5s alternate animationlogo;
+	animation: linear infinite 2.5s alternate animationlogo;
 	perspective: 200px;
 	perspective-origin: 50% 50%;
 	max-width: 100px;

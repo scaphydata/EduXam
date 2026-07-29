@@ -77,7 +77,7 @@ include(__DIR__ . '/../php/_debug.php');
                     Nombre d'étudiants : <?= function_exists('get_student_count') ? get_student_count() : '?' ?>
                 </div>
             <?php endif; ?>
-            <h2>lorem ipsum dolore sit amet lorem ipsum dolore sit amet</h2>
+            <h2>Du soutien pour les collègiens et lycéens</h2>
         </div>
     </div>
     <nav>
