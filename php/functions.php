@@ -44,15 +44,19 @@ function regenerate_csrf_token() {
 /**
  * Protège une page : redirige vers la connexion si l'utilisateur n'est pas connecté.
  */
-function check_logged_in() {
+function check_logged_in($formation_id = null) {
     if (!isset($_SESSION['user_id'])) {
         // Obtenir le chemin relatif vers la racine
         $redirect_path = "php/connexion.php";
-        if (file_exists("php/connexion.php")) {
-            header("Location: " . $redirect_path);
-        } else {
-            header("Location: connexion.php");
+        if (!file_exists("php/connexion.php")) {
+            $redirect_path = "connexion.php";
         }
+        
+        if ($formation_id) {
+            $redirect_path .= "?id=" . (int)$formation_id;
+        }
+        
+        header("Location: " . $redirect_path);
         exit;
     }
 }

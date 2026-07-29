@@ -4,18 +4,18 @@ require_once('php/functions.php');
 
 start_secure_session();
 
+// Get formation ID from URL
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
 // Check if it's a prof or a regular student
 $is_prof = isset($_SESSION['role']) && $_SESSION['role'] === 'prof';
 if ($is_prof) {
     check_prof_logged_in();
     require_once('templates/headerprofs.php');
 } else {
-    check_logged_in();
+    check_logged_in($id);
     require_once('templates/_headereleve.php');
 }
-
-// Get formation ID from URL
-$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 $formation = null;
 if ($id > 0) {

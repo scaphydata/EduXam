@@ -28,6 +28,7 @@ if (isset($_SESSION['user_id'])) {
 $error = "";
 $username = "";
 $role = "eleve";
+$id = isset($_GET['id']) ? (int)$_GET['id'] : (isset($_POST['id']) ? (int)$_POST['id'] : 0);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
@@ -53,6 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $table = "parents";
                 $redirect = "../parents.php";
                 $session_role = "parents";
+            }
+            
+            if ($id > 0 && $session_role === 'eleve') {
+                $redirect .= "?id=" . $id;
             }
 
             $stmt = $pdo->prepare("SELECT id, username, password FROM $table WHERE username = :username");
@@ -99,6 +104,9 @@ require_once __DIR__ . '/../templates/_header.php';
 
         <form action="login.php" method="POST" class="login-form">
             <input type="hidden" name="csrf_token" value="<?= h($csrf_token) ?>">
+            <?php if ($id > 0): ?>
+                <input type="hidden" name="id" value="<?= $id ?>">
+            <?php endif; ?>
 
             <div class="form-group">
                 <label for="role">Vous êtes :</label>

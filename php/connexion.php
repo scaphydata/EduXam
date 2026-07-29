@@ -11,6 +11,7 @@ if (isset($_SESSION['user_id'])) {
 
 $error = "";
 $username = "";
+$id = isset($_GET['id']) ? (int)$_GET['id'] : (isset($_POST['id']) ? (int)$_POST['id'] : 0);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
@@ -37,7 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Régénérer le token après connexion réussie
                 regenerate_csrf_token();
 
-                header("Location: ../eleve.php");
+                $redirect = "../eleve.php";
+                if ($id > 0) {
+                    $redirect .= "?id=" . $id;
+                }
+                header("Location: $redirect");
                 exit;
             } else {
                 $error = "Nom d'utilisateur ou mot de passe incorrect.";
@@ -66,6 +71,9 @@ require_once __DIR__ . '/../templates/_header.php';
 
         <form action="connexion.php" method="POST" class="login-form">
             <input type="hidden" name="csrf_token" value="<?= h($csrf_token) ?>">
+            <?php if ($id > 0): ?>
+                <input type="hidden" name="id" value="<?= $id ?>">
+            <?php endif; ?>
 
             <div class="form-group">
                 <label for="username">Nom d'utilisateur</label>
