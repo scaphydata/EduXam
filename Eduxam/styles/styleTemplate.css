@@ -1,0 +1,32 @@
+@font-face
+{
+	font-family: "Open sans",sans-serif,serif;
+	src:url("../font/typo.css");
+	font-weight: normal;
+	font-style: normal;
+}
+
+.class
+{
+	font-weight: bold;
+	font-weight: bolder;
+	font-style: italic;
+}
+/* Global */
+*{
+	box-sizing: border-box;
+}
+
+/* Header */
+
+/* Main */
+.col-one-third
+{
+	float :left;
+	width: 30%;
+	border: none;
+}
+
+/* Footer */
+
+
