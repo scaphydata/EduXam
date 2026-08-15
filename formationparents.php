@@ -24,7 +24,7 @@ try {
 } catch (PDOException $e) {
     // Handle error
 }
-require_once('templates/headerparents.php') ?>
+require_once('templates/headerparents.php'); ?>
 
 <section>
     <?php if ($id > 0): ?>
@@ -45,16 +45,17 @@ require_once('templates/headerparents.php') ?>
                 <h3><?= h($formation['name']) ?></h3>
 
                 <img src="<?= h($formation['image']) ?>" alt="<?= h($formation['name']) ?>" >
+                <p>
                 <?= nl2br(h($formation['description'])) ?>
                 </p>
                 <div class="readmore1" >
-                    <a href="profs.php">Retour aux formations</a>
+                    <a href="parents.php">Retour aux formations</a>
                 </div>
             <?php else: ?>
                 <h3>Formation non trouvée</h3>
                 <p>Désolé, nous n'avons pas pu trouver la formation demandée.</p>
                 <div class="readmore1">
-                    <a href="profs.php">Retour à l'accueil</a>
+                    <a href="parents.php">Retour à l'accueil</a>
                 </div>
             <?php endif; ?>
 
@@ -91,5 +92,5 @@ require_once('templates/headerparents.php') ?>
     <?php endif; ?>
 </section>
 
-<?php require_once('templates/_footer.php') ?>
+<?php require_once('templates/_footer.php'); ?>
 

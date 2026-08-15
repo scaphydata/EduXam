@@ -50,7 +50,7 @@ include(__DIR__ . '/../php/_debug.php');
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/logout.php">Se déconnecter</a></li>
                             <?php else: ?>
                                 <li class="#"><a href="<?= $base_url ?? '' ?>php/login.php">Se connecter</a></li>
-                                <li class="#"><a href="<?= $base_url ?? '' ?>php/inscription.php">S'inscrire</a></li>
+                                <li class="#"><a href="<?= $base_url ?? '' ?>php/register.php">S'inscrire</a></li>
                             <?php endif; ?>
                         </ul>
                     </div>

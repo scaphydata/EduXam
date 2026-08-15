@@ -26,59 +26,60 @@ if (isset($_SESSION['user_id'])) {
 }
 
 $error = "";
+$success = "";
 $username = "";
+$email = "";
 $role = "eleve";
-$id = isset($_GET['id']) ? (int)$_GET['id'] : (isset($_POST['id']) ? (int)$_POST['id'] : 0);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
+    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
     $role = isset($_POST['role']) ? $_POST['role'] : 'eleve';
     $csrfToken = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : '';
 
     if (!verify_csrf_token($csrfToken)) {
         $error = "Requête invalide.";
-    } elseif (!empty($username) && !empty($password)) {
+    } elseif (!empty($username) && !empty($password) && !empty($email)) {
         $pdo = getDatabaseConnection();
 
         if ($pdo) {
             $table = "users";
-            $redirect = "../eleve.php";
-            $session_role = "eleve";
-
             if ($role === 'prof') {
                 $table = "profs";
-                $redirect = "../profs.php";
-                $session_role = "prof";
             } elseif ($role === 'parents') {
                 $table = "parents";
-                $redirect = "../parents.php";
-                $session_role = "parents";
-            }
-            
-            if ($id > 0 && $session_role === 'eleve') {
-                $redirect .= "?id=" . $id;
             }
 
-            $stmt = $pdo->prepare("SELECT id, username, password FROM $table WHERE username = :username");
+            // Vérifier si l'utilisateur existe déjà
+            $stmt = $pdo->prepare("SELECT id FROM $table WHERE username = :username OR email = :email");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
-            $user = $stmt->fetch();
 
-            if ($user && password_verify($password, $user['password'])) {
-                session_regenerate_id(true);
-
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                $_SESSION['role'] = $session_role;
-
-                // Régénérer le token après connexion réussie
-                regenerate_csrf_token();
-
-                header("Location: $redirect");
-                exit;
+            if ($stmt->fetch()) {
+                $error = "Nom d'utilisateur ou email déjà utilisé pour ce rôle.";
             } else {
-                $error = "Nom d'utilisateur ou mot de passe incorrect.";
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                
+                if ($role === 'eleve') {
+                    $stmt = $pdo->prepare("INSERT INTO users (username, password, email, role) VALUES (:username, :password, :email, 'user')");
+                } else {
+                    $stmt = $pdo->prepare("INSERT INTO $table (username, password, email) VALUES (:username, :password, :email)");
+                }
+                
+                $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+                $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+
+                if ($stmt->execute()) {
+                    $success = "Inscription réussie ! Vous pouvez maintenant vous connecter.";
+                    $username = "";
+                    $email = "";
+                    regenerate_csrf_token();
+                } else {
+                    $error = "Une erreur est survenue lors de l'inscription.";
+                }
             }
         } else {
             $error = "Erreur de connexion à la base de données.";
@@ -96,17 +97,18 @@ require_once __DIR__ . '/../templates/_header.php';
 
 <section class="connexion-section">
     <div class="form-container">
-        <h3>Connexion</h3>
+        <h3>Inscription</h3>
 
         <?php if ($error): ?>
             <p class="error-message"><?= h($error) ?></p>
         <?php endif; ?>
 
-        <form action="login.php" method="POST" class="login-form">
+        <?php if ($success): ?>
+            <p class="success-message"><?= h($success) ?></p>
+        <?php endif; ?>
+
+        <form action="register.php" method="POST" class="login-form">
             <input type="hidden" name="csrf_token" value="<?= h($csrf_token) ?>">
-            <?php if ($id > 0): ?>
-                <input type="hidden" name="id" value="<?= $id ?>">
-            <?php endif; ?>
 
             <div class="form-group">
                 <label for="role">Vous êtes :</label>
@@ -123,19 +125,22 @@ require_once __DIR__ . '/../templates/_header.php';
             </div>
 
             <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="<?= h($email) ?>" required>
+            </div>
+
+            <div class="form-group">
                 <label for="password">Mot de passe</label>
                 <input type="password" id="password" name="password" required>
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="btn-submit">Se connecter</button>
+                <button type="submit" class="btn-submit">S'inscrire</button>
             </div>
         </form>
 
         <div class="form-footer">
-            <p>Pas encore de compte ? 
-                <a href="register.php">S'inscrire ici</a>
-            </p>
+            <p>Déjà un compte ? <a href="login.php">Se connecter</a></p>
         </div>
     </div>
 </section>

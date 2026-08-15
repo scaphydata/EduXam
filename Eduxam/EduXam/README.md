@@ -1,2 +1,0 @@
-# EduXam
-plateforme de cours 

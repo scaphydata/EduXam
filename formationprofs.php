@@ -24,7 +24,7 @@ try {
 } catch (PDOException $e) {
     // Handle error
 }
-require_once('templates/headerprofs.php')?>
+require_once('templates/headerprofs.php'); ?>
 
 <section>
     <?php if ($id > 0): ?>
@@ -45,6 +45,7 @@ require_once('templates/headerprofs.php')?>
                 <h3><?= h($formation['name']) ?></h3>
 
                 <img src="<?= h($formation['image']) ?>" alt="<?= h($formation['name']) ?>" >
+                <p>
                     <?= nl2br(h($formation['description'])) ?>
                 </p>
                 <div class="readmore1" >
@@ -91,5 +92,5 @@ require_once('templates/headerprofs.php')?>
     <?php endif; ?>
 </section>
 
-<?php require_once('templates/footerprofs.php') ?>
+<?php require_once('templates/footerprofs.php'); ?>
 

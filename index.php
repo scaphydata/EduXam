@@ -14,7 +14,7 @@ include('templates/_header.php');
             <?php if (isset($formations[$i])): ?>
                 <div class="formation1">
                     <h3><?= h($formations[$i]['name']) ?></h3>
-                    <img src="<?= h($formations[$i]['image']) ?>" alt="<?= h($formations[$i]['name']) ?>" />
+                    <a href="Formation.php?id=<?= $formations[$i]['id'] ?>"><img src="<?= h($formations[$i]['image']) ?>" alt="<?= h($formations[$i]['name']) ?>" /></a>
                     <p><?= h(mb_strimwidth($formations[$i]['description'], 0, 250, "...")) ?></p>
                     <div class="readmore1">
                         <a href="Formation.php?id=<?= $formations[$i]['id'] ?>">En savoir +</a>
@@ -25,7 +25,7 @@ include('templates/_header.php');
             <?php if (isset($formations[$i + 1])): ?>
                 <div class="formation2">
                     <h3><?= h($formations[$i + 1]['name']) ?></h3>
-                    <img src="<?= h($formations[$i + 1]['image']) ?>" alt="<?= h($formations[$i + 1]['name']) ?>" />
+                    <a href="Formation.php?id=<?= $formations[$i + 1]['id'] ?>"><img src="<?= h($formations[$i + 1]['image']) ?>" alt="<?= h($formations[$i + 1]['name']) ?>" /></a>
                     <p><?= h(mb_strimwidth($formations[$i + 1]['description'], 0, 250, "...")) ?></p>
                     <div class="readmore2">
                         <a href="Formation.php?id=<?= $formations[$i + 1]['id'] ?>">En savoir +</a>
